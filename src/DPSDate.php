@@ -19,4 +19,11 @@ class DPSDate
 	{
 		return $this->firstDate->diffInDays($this->secondDate) - 1;
 	}
+
+	public function getNumberOfWeekdaysBetweenTwoDates()
+	{
+		return $this->firstDate->diffInDaysFiltered(function(Carbon $date) use (&$days) {
+			return ! $date->isWeekend();
+		}, $this->secondDate) - 1;
+	}
 }

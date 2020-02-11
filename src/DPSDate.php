@@ -62,4 +62,9 @@ class DPSDate
 	{
 		return $numberOfDays * 1440;
 	}
+
+	private function hours($numberOfDays)
+	{
+		return $numberOfDays * 24;
+	}
 }

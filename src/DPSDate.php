@@ -67,4 +67,9 @@ class DPSDate
 	{
 		return $numberOfDays * 24;
 	}
+
+	private function years($numberOfDays)
+	{
+		return $numberOfDays / 365;
+	}
 }

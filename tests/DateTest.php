@@ -96,4 +96,25 @@ Class DateTest extends TestCase
 		$date = new DPSDate($firstDate, $secondDate, 'hours');
 		$this->assertEquals(336, $date->getNumberOfWeeksBetweenTwoDates());
 	}
+
+	public function test_it_can_convert_the_result_to_years()
+	{
+		$firstDate = '11-02-2020';
+		$secondDate = '14-02-2020';
+
+		$date = new DPSDate($firstDate, $secondDate, 'years');
+		$this->assertEquals(0.0054794520547945, $date->getNumberOfDaysBetweenTwoDates());
+
+		$firstDate = '10-02-2020';
+		$secondDate = '24-02-2020';
+
+		$date = new DPSDate($firstDate, $secondDate, 'years');
+		$this->assertEquals(0.024657534246575, $date->getNumberOfWeekdaysBetweenTwoDates());
+
+		$firstDate = '11-02-2020';
+		$secondDate = '02-03-2020';
+
+		$date = new DPSDate($firstDate, $secondDate, 'years');
+		$this->assertEquals(0.038356164383562, $date->getNumberOfWeeksBetweenTwoDates());
+	}
 }

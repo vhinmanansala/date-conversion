@@ -6,14 +6,26 @@ use Carbon\Carbon;
 
 class DPSDate
 {
-	private $firstDate;
-	private $secondDate;
+	public $firstDate;
+	public $secondDate;
 	private $conversion;
 
 	public function __construct($firstDate, $secondDate, $conversion = null)
 	{
-		$this->firstDate = Carbon::create($firstDate);
-		$this->secondDate = Carbon::create($secondDate);
+		if (is_array($firstDate)) {
+			$this->firstDate = Carbon::create($firstDate['date']);
+			$this->firstDate->setTimezone($firstDate['timezone']);
+		} else {
+			$this->firstDate = Carbon::create($firstDate);
+		}
+
+		if (is_array($secondDate)) {
+			$this->secondDate = Carbon::create($secondDate['date']);
+			$this->secondDate->setTimezone($secondDate['timezone']);
+		} else {
+			$this->secondDate = Carbon::create($secondDate);
+		}
+		
 		$this->conversion = $conversion;
 	}
 

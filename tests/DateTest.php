@@ -117,4 +117,15 @@ Class DateTest extends TestCase
 		$date = new DPSDate($firstDate, $secondDate, 'years');
 		$this->assertEquals(0.038356164383562, $date->getNumberOfWeeksBetweenTwoDates());
 	}
+
+	public function test_it_can_set_timezone()
+	{
+		$firstDate = array('date' => '11-02-2020', 'timezone' => 'Europe/Amsterdam');
+		$secondDate = array('date' => '14-02-2020', 'timezone' => 'Australia/Adelaide');
+
+		$date = new DPSDate($firstDate, $secondDate);
+
+		$this->assertEquals($firstDate['timezone'], $date->firstDate->timezone);
+		$this->assertEquals($secondDate['timezone'], $date->secondDate->timezone);
+	}
 }
